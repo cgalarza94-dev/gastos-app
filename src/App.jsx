@@ -1,11 +1,13 @@
-function App() {
-  const nombre = "Carlos Galarza";
-  const fecha = new Date().toLocaleDateString();
+function Persona({ nombre, saldo }) {
+  return <p>{nombre}: {saldo}</p>;
+}
 
+function App() {
   return (
     <div>
-      <h1>Hola {nombre}</h1>
-      <p>Hoy es {fecha}</p>
+      <Persona nombre="Sofía" saldo={10167} />
+      <Persona nombre="Martín" saldo={-5833} />
+      <Persona nombre="Juan" saldo={-5333} />
     </div>
   );
 }
