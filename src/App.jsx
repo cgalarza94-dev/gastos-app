@@ -1,19 +1,22 @@
-function Gasto({ descripcion, monto }) {
-  return <li>{descripcion} — ${monto}</li>;
-}
+import { useState } from "react";
 
 function App() {
-  const gastos = [
-    { id: 1, descripcion: "Carne", monto: 25000 },
-    { id: 2, descripcion: "Vino", monto: 12000 }
-  ];
+  const [descripcion, setDescripcion] = useState("");
+  const [monto, setMonto] = useState("");
+  const [mostrado, setMostrado] = useState(null);
+
+  const mostrar = () => {
+    setMostrado({ descripcion, monto });
+  };
 
   return (
-    <ul>
-      {gastos.map((g) => (
-        <Gasto key={g.id} descripcion={g.descripcion} monto={g.monto} />
-      ))}
-    </ul>
+    <div>
+      <input value={descripcion} onChange={(e) => setDescripcion(e.target.value)} />
+      <input type="number" value={monto} onChange={(e) => setMonto(e.target.value)} />
+      <button onClick={mostrar}>Mostrar</button>
+
+      {mostrado && <p>{mostrado.descripcion}: ${mostrado.monto}</p>}
+    </div>
   );
 }
 
