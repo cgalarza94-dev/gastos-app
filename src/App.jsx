@@ -1,20 +1,19 @@
-import { useState } from "react";
+function Gasto({ descripcion, monto }) {
+  return <li>{descripcion} — ${monto}</li>;
+}
 
 function App() {
-  const [contador, setContador] = useState(0);
-
-  const restar = () => {
-    if (contador > 0) {
-      setContador(contador - 1);
-    }
-  };
+  const gastos = [
+    { id: 1, descripcion: "Carne", monto: 25000 },
+    { id: 2, descripcion: "Vino", monto: 12000 }
+  ];
 
   return (
-    <div>
-      <p>{contador}</p>
-      <button onClick={() => setContador(contador + 1)}>+</button>
-      <button onClick={restar}>-</button>
-    </div>
+    <ul>
+      {gastos.map((g) => (
+        <Gasto key={g.id} descripcion={g.descripcion} monto={g.monto} />
+      ))}
+    </ul>
   );
 }
 
