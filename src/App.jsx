@@ -1,13 +1,19 @@
-function Persona({ nombre, saldo }) {
-  return <p>{nombre}: {saldo}</p>;
-}
+import { useState } from "react";
 
 function App() {
+  const [contador, setContador] = useState(0);
+
+  const restar = () => {
+    if (contador > 0) {
+      setContador(contador - 1);
+    }
+  };
+
   return (
     <div>
-      <Persona nombre="Sofía" saldo={10167} />
-      <Persona nombre="Martín" saldo={-5833} />
-      <Persona nombre="Juan" saldo={-5333} />
+      <p>{contador}</p>
+      <button onClick={() => setContador(contador + 1)}>+</button>
+      <button onClick={restar}>-</button>
     </div>
   );
 }
